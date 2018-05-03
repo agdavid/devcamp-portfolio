@@ -1,8 +1,9 @@
 class Blog < ApplicationRecord
+  enum status: [ :draft, :published ]
   extend FriendlyId
   friendly_id :title, use: :slugged
 
   validates_presence_of :title, :body
 
-  enum status: [ :draft, :published ]
+  belongs_to :topic
 end
